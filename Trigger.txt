@@ -1,0 +1,19 @@
+trigger CheckForMatch on Inhabitant__c (before insert, before update) {
+
+List<Contact__c> myContacts= [SELECT Name, Phone_Number__c, E_mail__c FROM Contact__c];
+
+For (Inhabitant__c haby:Trigger.New){
+         for(Contact__c thisContact:myContacts){
+             if(haby.name == thisContact.name && haby.E_Mail__c == thisContact.E_Mail__c && haby.Phone_Number__c  == ThisContact.Phone_Number__C){
+                 //Match info on inhabitant with contact
+                 haby.name = thisContact.name;
+                 haby.E_Mail__c = thisContact.E_Mail__c;
+                 haby.Phone_Number__c  = thisContact.Phone_Number__C;
+                 //Inhabitant__c.Contact__c = thiscontact;
+                 
+             }
+         }
+}
+
+
+}
